@@ -40,7 +40,37 @@
   <div>
       <hr>
       <h2>Help Save the Sasquatch Population</h2>
+      <hr>
 
-  </div>    
+      <form method="POST" action="/buysingle">
+        <h3>Buy Habitat Starter Kit</h3>
+        $10.00
+        <br/>
+        Quantity:
+        <input type="number" name="Quantity" value="1" style="width: 50px;" class="btn"/>
+        <input type="submit" value="Purchase" class="btn"/>
+        <br/>
+        <p>
+          The starter package comes with everything you sass needs!!
+        </p>
+        <p>This plan includes:</p>
+        <ul>
+          <li>1 Month Supply of Food</li>
+          <li>1 Month Supply of Water</li>
+          <li>1 Month Supply of Grass Bedding</li>
+          <li>1 Month Supply of Toys</li>
+        </ul>
+      </form>
+
+      <hr>
+
+      <form method="POST" action="/buyrecurring">
+        <h3>Rent Maintained Habitat</h3>
+        $10.00 a Month
+        <input type="submit" value="Purchase" class="btn"/>
+        <br/>
+        <p>This package comes with the Starter Kit and refills supplies every month</p>
+      </form>
+  </div>
 
 </html>
