@@ -11,27 +11,27 @@
   });
 
   server.get('/success/:orderID', (req, res)=>{
-
+    var orderID = req.params.orderID;
   });
 
   server.get('/cancel/:orderID', (req, res)=>{
-
+    var orderID = req.params.orderID;
   });
 
   server.get('/orderdetails/:orderID', (req, res)=>{
-
+    var orderID = req.params.orderID;
   });
 
   server.get('/refund/:orderID', (req, res)=>{
-
+    var orderID = req.params.orderID;
   });
 
   server.get('/recurring_succes/:planID', (req, res)=>{
-
+    var planID = req.params.planID;
   });
 
   server.get('/recurring_cancel/:planID', (req, res)=>{
-
+    var planID = req.params.planID;
   });
 
   server.get('/recurring_orderdetails/:agreementID', (req, res)=>{
