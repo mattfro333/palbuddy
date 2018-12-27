@@ -35,11 +35,11 @@
   });
 
   server.get('/recurring_orderdetails/:agreementID', (req, res)=>{
-
+    var agreementID = req.params.agreementID;
   });
 
   server.post('/buysingle', (req, res)=>{
-
+    var quantity = req.body.Quantity;
   });
 
   server.post('/buyrecurring', (req, res)=>{
