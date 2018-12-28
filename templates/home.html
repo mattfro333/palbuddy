@@ -3,8 +3,11 @@
   html{
     color: white;
     text-shadow: 0px 0px 2px black;
-    background-size: 100% 100%;
+    background-size: 80% 100%;
     background-image: url("/img/squatchy.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
   }
 
   p{
@@ -44,14 +47,13 @@
 
       <form method="POST" action="/buysingle">
         <h3>Buy Habitat Starter Kit</h3>
-        $10.00
-        <br/>
+        <p>$10.00</p>
         Quantity:
         <input type="number" name="Quantity" value="1" style="width: 50px;" class="btn"/>
         <input type="submit" value="Purchase" class="btn"/>
         <br/>
         <p>
-          The starter package comes with everything you sass needs!!
+          The starter package comes with everything your sass needs!!
         </p>
         <p>This plan includes:</p>
         <ul>
@@ -66,7 +68,7 @@
 
       <form method="POST" action="/buyrecurring">
         <h3>Rent Maintained Habitat</h3>
-        $10.00 a Month
+        <p>$10.00 a Month</p>
         <input type="submit" value="Purchase" class="btn"/>
         <br/>
         <p>This package comes with the Starter Kit and refills supplies every month</p>
