@@ -40,8 +40,17 @@
 
         cb(err, results);
         return close();
-      })
+      });
     });
+  }
+
+  mongoService.Delete = (colName, findObj, cb)=>{
+    Connect((err, db, close)=>{
+    db.collection(colName).remove(findObj, (err, results)=>{
+      cb(err, results);
+      return close();
+    });
+  });
   }
 
 })
