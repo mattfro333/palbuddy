@@ -11,11 +11,29 @@
   });
 
   server.get('/success/:orderID', (req, res)=>{
-    var orderID = req.params.orderID;
+    // console.log("req: " + JSON.stringify(req.params));
+ var orderID = req.params.orderID;
+ // console.log("orderID, server.get(), l14: " + orderID);
+ var payerID = req.query.PayerID;
+ // console.log("payerID, server.get(), l16: " + payerID);
+ squatchPurchaseRepo.ExecuteOrder(payerID, orderID, (err, successID) => {
+     if (err) {
+         res.json(err);
+     } else {
+         res.send('<h1>Order Placed</h1>Please save your order confirmation number:<h3>' + successID + '</h3>')
+     }
+ });
   });
 
   server.get('/cancel/:orderID', (req, res)=>{
     var orderID = req.params.orderID;
+      squatchPurchaseRepo.CancelOrder(orderID, (err, results) => {
+          if (err) {
+              res.send("There was an error removing this order");
+          } else {
+              res.redirect("/");
+          }
+      });
   });
 
   server.get('/orderdetails/:orderID', (req, res)=>{
