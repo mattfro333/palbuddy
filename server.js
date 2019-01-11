@@ -38,14 +38,43 @@
 
   server.get('/orderdetails/:orderID', (req, res)=>{
     var orderID = req.params.orderID;
+ squatchPurchaseRepo.GetOrder(orderID, (err, results) => {
+     if (err) {
+         res.json(err);
+     } else {
+         res.json(results);
+     }
+ });
   });
 
   server.get('/refund/:orderID', (req, res)=>{
-    var orderID = req.params.orderID;
+    var quantity = req.body.Quantity;
+ var purchaseName = "Single Squatch Habitat";
+ var purchasePrice = 10.00;
+ var taxPrice = 0;
+ var shipppingPrice = 0;
+ var description = "Single Habitat Sasuqtch Starter Kit";
+
+ squatchPurchaseRepo.BuySingle(purchaseName, purchasePrice, taxPrice, shipppingPrice, quantity, description, (err, url) => {
+     if (err) {
+         // ToDo: do NOT show errors in details in production environment
+         res.json(err);
+     } else {
+         res.redirect(url);
+     }
+ });
   });
 
   server.get('/recurring_succes/:planID', (req, res)=>{
-    var planID = req.params.planID;
+    var orderID = req.params.orderID;
+
+  squatchPurchaseRepo.RefundOrder(orderID, (err, refund) => {
+      if (err) {
+          res.json(err);
+      } else {
+          res.json(refund);
+      }
+  });
   });
 
   server.get('/recurring_cancel/:planID', (req, res)=>{
