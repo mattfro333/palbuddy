@@ -48,21 +48,15 @@
   });
 
   server.get('/refund/:orderID', (req, res)=>{
-    var quantity = req.body.Quantity;
- var purchaseName = "Single Squatch Habitat";
- var purchasePrice = 10.00;
- var taxPrice = 0;
- var shipppingPrice = 0;
- var description = "Single Habitat Sasuqtch Starter Kit";
+    var orderID = req.params.orderID;
 
- squatchPurchaseRepo.BuySingle(purchaseName, purchasePrice, taxPrice, shipppingPrice, quantity, description, (err, url) => {
-     if (err) {
-         // ToDo: do NOT show errors in details in production environment
-         res.json(err);
-     } else {
-         res.redirect(url);
-     }
- });
+     squatchPurchaseRepo.RefundOrder(orderID, (err, refund) => {
+         if (err) {
+             res.json(err);
+         } else {
+             res.json(refund);
+         }
+     });
   });
 
   server.get('/recurring_succes/:planID', (req, res)=>{
@@ -86,11 +80,36 @@
   });
 
   server.post('/buysingle', (req, res)=>{
-    var quantity = req.body.Quantity
+    var quantity = req.body.Quantity;
+ var purchaseName = "Single Squatch Habitat";
+ var purchasePrice = 10.00;
+ var taxPrice = 0;
+ var shipppingPrice = 0;
+ var description = "Single Habitat Sasuqtch Starter Kit";
+
+ squatchPurchaseRepo.BuySingle(purchaseName, purchasePrice, taxPrice, shipppingPrice, quantity, description, (err, url) => {
+     if (err) {
+         // ToDo: do NOT show errors in details in production environment
+         res.json(err);
+     } else {
+         res.redirect(url);
+     }
+ });
   });
 
   server.post('/buyrecurring', (req, res)=>{
-
+    squatchPurchaseRepo.BuyRecurring(
+        "Squatch Plan",
+        "Recurring Squatch Plan",
+        0,
+        (err, plan) => {
+            if (err) {
+                res.json(err);
+            } else {
+                res.redirect(plan);
+            }
+        }
+    );
   });
 
   server.listen(8080, "localhost", (err)=>{
